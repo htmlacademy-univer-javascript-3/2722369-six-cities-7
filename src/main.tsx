@@ -1,4 +1,4 @@
-import PlaceCard from './component/placeCard/PlaceCard';
+import PlaceCard from './component/placeCard/PlaceCard'; 
 
 type MainProps = {
   rentalOffersCount: number;
