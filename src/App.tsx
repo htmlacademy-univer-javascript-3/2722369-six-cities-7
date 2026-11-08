@@ -5,26 +5,27 @@ import Favorites from './pages/Favorites';
 import Offer from './pages/Offer';
 import NotFound from './pages/NotFound';
 import PrivateRoute from './component/private-route/private-route';
+import type { Offer as OfferType } from './types/offer';
 
 type AppProps = {
-  rentalOffersCount: number;
+  offers: OfferType[];
 };
 
-function App({ rentalOffersCount }: AppProps): JSX.Element {
+function App({ offers }: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Main rentalOffersCount={rentalOffersCount} />} />
+        <Route path="/" element={<Main offers={offers} />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/favorites"
           element={
-            <PrivateRoute isAuthorized={false}>
-              <Favorites />
+            <PrivateRoute isAuthorized>
+              <Favorites offers={offers} />
             </PrivateRoute>
           }
         />
-        <Route path="/offer/:id" element={<Offer />} />
+        <Route path="/offer/:id" element={<Offer offers={offers} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
