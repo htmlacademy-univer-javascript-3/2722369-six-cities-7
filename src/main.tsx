@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import OffersList from './component/offersList/OffersList';
+import Map from './component/map/Map';
+import { DEFAULT_CITY } from './const';
 import type { Offer } from './types/offer';
 
 type MainProps = {
@@ -99,7 +101,9 @@ function Main({ offers }: MainProps): JSX.Element {
               <OffersList offers={offers} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map" />
+              <section className="cities__map map">
+                <Map city={DEFAULT_CITY} offers={offers} />
+              </section>
             </div>
           </div>
         </div>

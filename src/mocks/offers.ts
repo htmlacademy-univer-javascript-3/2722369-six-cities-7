@@ -1,3 +1,4 @@
+import { DEFAULT_CITY } from '../const';
 import type { Offer } from '../types/offer';
 
 export const offers: Offer[] = [
@@ -41,14 +42,7 @@ export const offers: Offer[] = [
       description:
         'Angelina is a professional host and knows everything about the best coffee and canals of Amsterdam.',
     },
-    city: {
-      name: 'Amsterdam',
-      location: {
-        latitude: 52.3909553943508,
-        longitude: 4.85309666406198,
-        zoom: 12,
-      },
-    },
+    city: DEFAULT_CITY,
     location: {
       latitude: 52.3909553943508,
       longitude: 4.85309666406198,
@@ -76,17 +70,10 @@ export const offers: Offer[] = [
       isPro: false,
       description: 'Max rents out a couple of rooms and is always happy to tell guests about the neighbourhood.',
     },
-    city: {
-      name: 'Amsterdam',
-      location: {
-        latitude: 52.3809553943508,
-        longitude: 4.88309666406198,
-        zoom: 12,
-      },
-    },
+    city: DEFAULT_CITY,
     location: {
-      latitude: 52.3809553943508,
-      longitude: 4.88309666406198,
+      latitude: 52.3609553943508,
+      longitude: 4.85309666406198,
       zoom: 16,
     },
   },
@@ -126,17 +113,10 @@ export const offers: Offer[] = [
       isPro: true,
       description: 'Sophie lives next door and is a superhost with more than five years of experience.',
     },
-    city: {
-      name: 'Amsterdam',
-      location: {
-        latitude: 52.3709553943508,
-        longitude: 4.89309666406198,
-        zoom: 12,
-      },
-    },
+    city: DEFAULT_CITY,
     location: {
-      latitude: 52.3709553943508,
-      longitude: 4.89309666406198,
+      latitude: 52.3909553943508,
+      longitude: 4.929309666406198,
       zoom: 16,
     },
   },
@@ -161,96 +141,10 @@ export const offers: Offer[] = [
       isPro: false,
       description: 'Oliver is an architect and loves sharing the city routes he walks with his dog.',
     },
-    city: {
-      name: 'Paris',
-      location: {
-        latitude: 48.856663,
-        longitude: 2.351556,
-        zoom: 12,
-      },
-    },
+    city: DEFAULT_CITY,
     location: {
-      latitude: 48.856663,
-      longitude: 2.351556,
-      zoom: 16,
-    },
-  },
-  {
-    id: '5',
-    title: 'White castle hotel with panoramic terrace',
-    type: 'hotel',
-    price: 250,
-    rating: 4.6,
-    isPremium: true,
-    isFavorite: false,
-    previewImage: 'img/studio-01.jpg',
-    images: ['img/studio-01.jpg', 'img/apartment-03.jpg', 'img/studio-photos.jpg'],
-    description:
-      'A design hotel in a historic building with a panoramic terrace, a spa and a breakfast included in the price.',
-    bedrooms: 2,
-    maxAdults: 4,
-    goods: [
-      'Wi-Fi',
-      'Towels',
-      'Heating',
-      'Coffee machine',
-      'Kitchen',
-      'Cable TV',
-      'Fridge',
-      'Dishwasher',
-    ],
-    host: {
-      name: 'Marie',
-      avatarUrl: 'img/avatar-angelina.jpg',
-      isPro: true,
-      description: 'Marie is the manager of the hotel and takes care of every detail of your stay.',
-    },
-    city: {
-      name: 'Cologne',
-      location: {
-        latitude: 50.938361,
-        longitude: 6.959974,
-        zoom: 12,
-      },
-    },
-    location: {
-      latitude: 50.938361,
-      longitude: 6.959974,
-      zoom: 16,
-    },
-  },
-  {
-    id: '6',
-    title: 'Sunny studio near the Grand Place',
-    type: 'apartment',
-    price: 95,
-    rating: 3.9,
-    isPremium: false,
-    isFavorite: true,
-    previewImage: 'img/apartment-02.jpg',
-    images: ['img/apartment-02.jpg', 'img/room-small.jpg', 'img/room.jpg'],
-    description:
-      'A compact sunny studio a few minutes away from the Grand Place with a tiny balcony and a coffee place downstairs.',
-    bedrooms: 1,
-    maxAdults: 2,
-    goods: ['Wi-Fi', 'Heating', 'Kitchen', 'Coffee machine', 'Fridge'],
-    host: {
-      name: 'Lucas',
-      avatarUrl: 'img/avatar-max.jpg',
-      isPro: false,
-      description: 'Lucas is a student who rents out his studio while travelling around Europe.',
-    },
-    city: {
-      name: 'Brussels',
-      location: {
-        latitude: 50.846557,
-        longitude: 4.351697,
-        zoom: 12,
-      },
-    },
-    location: {
-      latitude: 50.846557,
-      longitude: 4.351697,
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
       zoom: 16,
     },
   },
