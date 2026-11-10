@@ -1,3 +1,5 @@
+import type { User } from './user';
+
 export type OfferType = 'apartment' | 'room' | 'house' | 'hotel';
 
 export type CityName =
@@ -19,10 +21,7 @@ export type City = {
   location: Location;
 };
 
-export type Host = {
-  name: string;
-  avatarUrl: string;
-  isPro: boolean;
+export type Host = User & {
   description: string;
 };
 
