@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import Map from '../component/map/Map';
 import OffersList from '../component/offersList/OffersList';
@@ -5,18 +6,18 @@ import ReviewsList from '../component/reviewsList/ReviewsList';
 import ReviewForm from '../component/reviewForm/ReviewForm';
 import NotFound from './NotFound';
 import { OFFER_TYPE_LABELS, RATING_PERCENT_PER_POINT } from '../const';
-import type { Offer as OfferType } from '../types/offer';
 import type { Review as ReviewType } from '../types/review';
+import type { State } from '../types/state';
 
 type OfferProps = {
-  offers: OfferType[];
   reviews: ReviewType[];
 };
 
 const NEAR_PLACES_COUNT = 3;
 
-function Offer({ offers, reviews }: OfferProps): JSX.Element {
+function Offer({ reviews }: OfferProps): JSX.Element {
   const { id } = useParams<{ id: string }>();
+  const offers = useSelector((state: State) => state.offers);
 
   const currentOffer = offers.find((item) => item.id === id);
 

@@ -1,13 +1,11 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import OffersList from '../component/offersList/OffersList';
 import FavoritesEmpty from './FavoritesEmpty';
-import type { Offer } from '../types/offer';
+import type { State } from '../types/state';
 
-type FavoritesProps = {
-  offers: Offer[];
-};
-
-function Favorites({ offers }: FavoritesProps): JSX.Element {
+function Favorites(): JSX.Element {
+  const offers = useSelector((state: State) => state.offers);
   const favoriteOffers = offers.filter((offer) => offer.isFavorite);
 
   if (favoriteOffers.length === 0) {

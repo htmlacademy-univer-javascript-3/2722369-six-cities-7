@@ -1,14 +1,28 @@
+import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import CitiesList from './component/citiesList/CitiesList';
 import OffersList from './component/offersList/OffersList';
 import Map from './component/map/Map';
-import { DEFAULT_CITY } from './const';
-import type { Offer } from './types/offer';
+import { CITIES, CITY_NAMES } from './const';
+import { changeCity } from './store/action';
+import type { CityName } from './types/offer';
+import type { State } from './types/state';
 
-type MainProps = {
-  offers: Offer[];
-};
+function Main(): JSX.Element {
+  const city = useSelector((state: State) => state.city);
+  const offers = useSelector((state: State) => state.offers);
+  const dispatch = useDispatch();
 
-function Main({ offers }: MainProps): JSX.Element {
+  const cityOffers = useMemo(
+    () => offers.filter((offer) => offer.city.name === city),
+    [offers, city],
+  );
+
+  const handleCityChange = (newCity: CityName) => {
+    dispatch(changeCity(newCity));
+  };
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -44,45 +58,18 @@ function Main({ offers }: MainProps): JSX.Element {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Paris</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Cologne</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Brussels</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>Amsterdam</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Hamburg</span>
-                </a>
-              </li>
-              <li className="locations__item">
-                <a className="locations__item-link tabs__item" href="#">
-                  <span>Dusseldorf</span>
-                </a>
-              </li>
-            </ul>
+            <CitiesList
+              cities={CITY_NAMES}
+              currentCity={city}
+              onCityChange={handleCityChange}
+            />
           </section>
         </div>
         <div className="cities">
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{offers.length} places to stay in Amsterdam</b>
+              <b className="places__found">{cityOffers.length} places to stay in {city}</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex={0}>
@@ -98,11 +85,11 @@ function Main({ offers }: MainProps): JSX.Element {
                   <li className="places__option" tabIndex={0}>Top rated first</li>
                 </ul>
               </form>
-              <OffersList offers={offers} />
+              <OffersList offers={cityOffers} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
-                <Map city={DEFAULT_CITY} offers={offers} />
+                <Map city={CITIES[city]} offers={cityOffers} />
               </section>
             </div>
           </div>
